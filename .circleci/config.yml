@@ -10,6 +10,7 @@ jobs:
             cd clashk
             sudo apt-get update && sudo apt-get install golang
             sdkmanager --install "ndk;21.0.6113669"
+            ls /opt/android/sdk/
             ./gradlew androidDependencies
             ./gradlew assembleDebug
 
