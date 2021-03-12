@@ -8,9 +8,9 @@ jobs:
           command: |
             git clone https://github.com/kmou424/ClashKForAndroid.git clashk  --recursive
             cd clashk
+            source gen_key.sh
             sudo apt-get update && sudo apt-get install golang
             sdkmanager --install "ndk;21.0.6113669"
-            ls /opt/android/sdk/
             ./gradlew androidDependencies
             ./gradlew assembleDebug
 
