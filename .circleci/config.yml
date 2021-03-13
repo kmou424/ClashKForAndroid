@@ -10,9 +10,15 @@ jobs:
             git clone https://github.com/kmou424/ClashKForAndroid.git clashk  --recursive
             cd clashk
             source gen_key.sh
-            sudo apt-get update && sudo apt-get install golang
+            sudo apt-get update && sudo apt-get install software-properties-common
+            sudo add-apt-repository --yes ppa:longsleep/golang-backports
+            sudo apt-get update --allow-insecure-repositories
+            sudo apt-get install golang-go --allow-unauthenticated
             sdkmanager --install "ndk;$NDKVER"
             ./gradlew androidDependencies
+            export GOOS=android
+            export GOARCH=arm64
+            export CGO_ENABLED=1
             ./gradlew assembleDebug
 
 workflows:
